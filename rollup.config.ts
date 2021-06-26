@@ -7,7 +7,7 @@ import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
 
-const libraryName = 'telegraf-postgres-session-sequelize'
+const libraryName = 'session'
 
 export default {
   input: `src/${libraryName}.ts`,

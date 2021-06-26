@@ -57,10 +57,9 @@ export const Session = <C extends Context = Context>(
 
   return async (ctx: Context, next) => {
     const key = getKey(ctx)
-    const data = key == null ? undefined : await getSession(key)
 
     // @ts-ignore
-    ctx[sessionName] = data
+    ctx[sessionName] = await getSession(key)
 
     await next()
 

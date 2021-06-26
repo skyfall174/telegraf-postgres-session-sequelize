@@ -1,4 +1,5 @@
-import { DataTypes, Model, ModelCtor, Optional, Sequelize } from 'sequelize'
+import { TEXT } from 'sequelize/types/index'
+import { Model, ModelCtor, Optional, Sequelize } from 'sequelize'
 
 export interface ModelSettings {
   tableName: string
@@ -9,11 +10,13 @@ export interface SessionModelField {
   data: string
 }
 
-export interface SessionCreationAttributes extends Optional<SessionModelField, 'id'> {}
+export interface SessionCreationAttributes extends Optional<SessionModelField, 'id'> {
+}
 
 export interface SessionModel
   extends Model<SessionModelField, SessionCreationAttributes>,
-    SessionModelField {}
+    SessionModelField {
+}
 
 export function getSessionTable(
   sequelize: Sequelize,
@@ -23,13 +26,13 @@ export function getSessionTable(
     'SessionModel',
     {
       id: {
-        type: DataTypes.TEXT,
+        type: TEXT,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
       data: {
-        type: DataTypes.TEXT
+        type: TEXT
       }
     },
     {
